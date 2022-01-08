@@ -31,7 +31,7 @@
 #include <pthread.h>
 #include <semaphore.h>
 #endif
-#include <stdio.h>
+
 #include <string.h>
 #include "iin.h"
 #include "osal.h"

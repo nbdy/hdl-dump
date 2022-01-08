@@ -26,7 +26,6 @@
 
 /* MacOS X support patch; there is more in osal_unix.c */
 #if defined(__APPLE__) || defined(__FreeBSD__)
-#undef _BUILD_UNIX
 #define _BUILD_UNIX
 #define lseek64     lseek
 #define stat64      stat

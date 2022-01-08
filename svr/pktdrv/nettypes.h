@@ -9,6 +9,7 @@ typedef unsigned long u32;
 typedef unsigned short u16;
 #else
 #include <stddef.h>
+#include <stdint-gcc.h>
 typedef uint32_t u32;
 typedef uint16_t u16;
 #endif

@@ -24,14 +24,16 @@
 #if defined(_BUILD_WIN32)
 #include <windows.h>
 #endif
-#include <assert.h>
+
 #include <ctype.h>
 #include <signal.h>
+
 #if defined(_BUILD_WIN32)
 /* b0rken in cygwin's headers */
 #undef SIGINT
 #define SIGINT 2
 #endif
+
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -46,11 +48,12 @@
 #include "hdl.h"
 #include "isofs.h"
 #include "iin.h"
+
 #if defined(_BUILD_WIN32)
 #include "iin_spti.h"
 #include "aspi_hlio.h"
 #endif
-#include "aligned.h"
+
 #include "hio.h"
 #include "dict.h"
 #include "net_io.h"
