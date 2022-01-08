@@ -30,8 +30,8 @@
 C_START
 
 /* would accept "cd*:" */
-int iin_optical_probe_path(const char *path,
-                           /*@special@*/ iin_p_t *iin) /*@allocates *iin@*/ /*@defines *iin@*/;
+int iin_optical_probe_path(const char* path,
+                           /*@special@*/ iin_p_t* iin) /*@allocates *iin@*/ /*@defines *iin@*/;
 
 C_END
 

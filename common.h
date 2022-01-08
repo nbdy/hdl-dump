@@ -26,11 +26,11 @@
 
 #include "config.h"
 #include "dict.h"
+#include "hdl.h"
+#include "hio.h"
+#include "iin.h"
 #include "osal.h"
 #include "progress.h"
-#include "iin.h"
-#include "hio.h"
-#include "hdl.h"
 
 C_START
 
@@ -39,73 +39,72 @@ C_START
 #define MAX_PATH 1024
 #endif
 
+char* ltrim(/*@returned@*/ char* text);
 
-char *ltrim(/*@returned@*/ char *text);
-
-char *rtrim(/*@returned@*/ char *text);
+char* rtrim(/*@returned@*/ char* text);
 
 /* nonzero if same, zero if different */
-int caseless_compare(const char *s1,
-                     const char *s2);
+int caseless_compare(const char* s1,
+                     const char* s2);
 
 /* would copy until EOF if bytes == 0 */
 int copy_data(osal_handle_t in,
               osal_handle_t out,
               u_int64_t bytes,
               u_int32_t buff_size,
-              progress_t *pgs);
+              progress_t* pgs);
 
 /* data buffer is zero-terminated */
-int read_file(const char *file_name,
-              /*@out@*/ char **data,
-              /*@out@*/ u_int32_t *len);
+int read_file(const char* file_name,
+              /*@out@*/ char** data,
+              /*@out@*/ u_int32_t* len);
 
-int write_file(const char *file_name,
-               const void *data,
+int write_file(const char* file_name,
+               const void* data,
                u_int32_t len);
 
-int dump_device(const dict_t *config,
-                const char *device_name,
-                const char *output_file,
+int dump_device(const dict_t* config,
+                const char* device_name,
+                const char* output_file,
                 u_int64_t max_size,
-                progress_t *pgs);
+                progress_t* pgs);
 
 /* nonzero if file can be opened for reading, zero if none or on error */
-int file_exists(const char *path);
+int file_exists(const char* path);
 
 /* checks whether original_file exists; if not, checks for the same filename,
    in the directory of secondary file; returns RET_OK on success;
    modifies original_file if necessary */
 int lookup_file(char original_file[MAX_PATH],
-                const char *secondary_file);
+                const char* secondary_file);
 
-int iin_copy(iin_t *iin,
+int iin_copy(iin_t* iin,
              osal_handle_t out,
              u_int32_t start_sector,
              u_int32_t num_sectors,
-             progress_t *pgs);
+             progress_t* pgs);
 
-int iin_copy_ex(iin_t *iin,
-                hio_t *hio,
+int iin_copy_ex(iin_t* iin,
+                hio_t* hio,
                 u_int32_t input_start_sector,
                 u_int32_t output_start_sector,
                 u_int32_t num_sectors,
-                progress_t *pgs);
+                progress_t* pgs);
 
-/*@observer@*/ const char *get_config_file(void);
-void set_config_defaults(dict_t *config);
+/*@observer@*/ const char* get_config_file(void);
+void set_config_defaults(dict_t* config);
 
-compat_flags_t parse_compat_flags(const char *flags);
-unsigned short parse_dma(const char *flags);
+compat_flags_t parse_compat_flags(const char* flags);
+unsigned short parse_dma(const char* flags);
 
-int ddb_lookup(const dict_t *config,
-               const char *startup,
+int ddb_lookup(const dict_t* config,
+               const char* startup,
                /*@out@*/ char name[HDL_GAME_NAME_MAX + 1],
-               /*@out@*/ compat_flags_t *flags);
+               /*@out@*/ compat_flags_t* flags);
 
-int ddb_update(const dict_t *config,
-               const char *startup,
-               const char *name,
+int ddb_update(const dict_t* config,
+               const char* startup,
+               const char* name,
                compat_flags_t flags);
 
 C_END

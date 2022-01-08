@@ -31,13 +31,13 @@ C_START
 
 unsigned long spti_get_last_error_code(void);
 
-const char *spti_get_last_error_msg(void);
+const char* spti_get_last_error_msg(void);
 
-const char *spti_get_error_msg(unsigned long spti_error_code);
+const char* spti_get_error_msg(unsigned long spti_error_code);
 
 /* would accept a drive letter ("d:", "e:",...) of an optical drive */
-int iin_spti_probe_path(const char *path,
-                        /*@special@*/ iin_p_t *iin) /*@allocates *iin@*/ /*@defines *iin@*/;
+int iin_spti_probe_path(const char* path,
+                        /*@special@*/ iin_p_t* iin) /*@allocates *iin@*/ /*@defines *iin@*/;
 
 C_END
 

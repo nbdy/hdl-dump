@@ -19,30 +19,27 @@ const nt_dword_t svr_magic;
 
 /* this one is 14 bytes so it will complement ethernet + ip + udp headers
  * to be multiple of 4 bytes */
-typedef struct svr_packet
-{
-    nt_byte_t magic[3];
-    nt_byte_t seq_no;
-    nt_dword_t start;
-    nt_dword_t result;
-    nt_byte_t command;
-    nt_byte_t count;
-    unsigned char data[1];
+typedef struct svr_packet {
+  nt_byte_t magic[3];
+  nt_byte_t seq_no;
+  nt_dword_t start;
+  nt_dword_t result;
+  nt_byte_t command;
+  nt_byte_t count;
+  unsigned char data[1];
 } svr_packet; /* 14+ bytes */
 
-#define SVR_TEST_MAGIC(p) (p[0] == svr_magic[0] && \
-                           p[1] == svr_magic[1] && \
-                           p[2] == svr_magic[2])
+#define SVR_TEST_MAGIC(p) (p[0] == svr_magic[0] && p[1] == svr_magic[1] && p[2] == svr_magic[2])
 
 enum commands {
-    cmd_stat = 1,
-    cmd_read = 2,
-    cmd_write = 3,
-    cmd_sync = 4,
-    cmd_shutdown = 5
+  cmd_stat = 1,
+  cmd_read = 2,
+  cmd_write = 3,
+  cmd_sync = 4,
+  cmd_shutdown = 5
 };
 
 int svr_startup(void);
-int svr_request(const udp_frame_t *uf);
+int svr_request(const udp_frame_t* uf);
 
 #endif /* _SVR_H defined? */

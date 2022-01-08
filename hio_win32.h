@@ -25,16 +25,16 @@
 #define _HIO_WIN32_H
 
 #include "config.h"
-#include "hio.h"
 #include "dict.h"
+#include "hio.h"
 
 C_START
 
 /* accepts paths in the following form:
    "hdd?:" or "hdd??:" where ? is 0-based device index */
-int hio_win32_probe(const dict_t *config,
-                    const char *path,
-                    /*@special@*/ hio_p_t *hio) /*@allocates *hio@*/ /*@defines *hio@*/;
+int hio_win32_probe(const dict_t* config,
+                    const char* path,
+                    /*@special@*/ hio_p_t* hio) /*@allocates *hio@*/ /*@defines *hio@*/;
 
 C_END
 

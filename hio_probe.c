@@ -21,26 +21,24 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#include "hio_win32.h"
-#include "hio_udpnet2.h"
 #include "hio_dbg.h"
 #include "hio_trace.h"
+#include "hio_udpnet2.h"
+#include "hio_win32.h"
 #include "retcodes.h"
 
-
 /**************************************************************/
-int hio_probe(const dict_t *config,
-              const char *path,
-              hio_t **hio)
-{
-    int result = RET_NOT_COMPAT;
-    if (result == RET_NOT_COMPAT)
-        result = hio_trace_probe(config, path, hio);
-    if (result == RET_NOT_COMPAT)
-        result = hio_dbg_probe(config, path, hio);
-    if (result == RET_NOT_COMPAT)
-        result = hio_udpnet2_probe(config, path, hio);
-    if (result == RET_NOT_COMPAT)
-        result = hio_win32_probe(config, path, hio);
-    return (result);
+int hio_probe(const dict_t* config,
+              const char* path,
+              hio_t** hio) {
+  int result = RET_NOT_COMPAT;
+  if (result == RET_NOT_COMPAT)
+    result = hio_trace_probe(config, path, hio);
+  if (result == RET_NOT_COMPAT)
+    result = hio_dbg_probe(config, path, hio);
+  if (result == RET_NOT_COMPAT)
+    result = hio_udpnet2_probe(config, path, hio);
+  if (result == RET_NOT_COMPAT)
+    result = hio_win32_probe(config, path, hio);
+  return (result);
 }

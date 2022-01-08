@@ -30,8 +30,8 @@
 C_START
 
 /* would accept any plain ISO file */
-int iin_iso_probe_path(const char *path,
-                       /*@special@*/ iin_p_t *iin) /*@allocates *iin@*/ /*@defines *iin@*/;
+int iin_iso_probe_path(const char* path,
+                       /*@special@*/ iin_p_t* iin) /*@allocates *iin@*/ /*@defines *iin@*/;
 
 C_END
 

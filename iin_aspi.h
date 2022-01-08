@@ -30,8 +30,8 @@
 C_START
 
 /* would accept "cd0:2:0" */
-int iin_aspi_probe_path(const char *path,
-                        /*@special@*/ iin_p_t *iin) /*@allocates *iin@*/ /*@defines *iin@*/;
+int iin_aspi_probe_path(const char* path,
+                        /*@special@*/ iin_p_t* iin) /*@allocates *iin@*/ /*@defines *iin@*/;
 
 C_END
 

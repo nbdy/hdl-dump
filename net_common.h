@@ -27,12 +27,12 @@
 #include "config.h"
 
 int recv_exact(int s,
-               void *outp,
+               void* outp,
                u_int32_t bytes,
                int flags);
 
 int send_exact(int s,
-               const void *inp,
+               const void* inp,
                u_int32_t bytes,
                int flags);
 

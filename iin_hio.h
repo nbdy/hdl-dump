@@ -30,9 +30,9 @@
 C_START
 
 /* would accept "partition@device" */
-int iin_hio_probe_path(const dict_t *config,
-                       const char *path,
-                       /*@special@*/ iin_p_t *iin) /*@allocates *iin@*/ /*@defines *iin@*/;
+int iin_hio_probe_path(const dict_t* config,
+                       const char* path,
+                       /*@special@*/ iin_p_t* iin) /*@allocates *iin@*/ /*@defines *iin@*/;
 
 C_END
 

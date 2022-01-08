@@ -26,6 +26,6 @@
 
 /* returns a new iin which is tuned for "streaming" (sequential reading);
  * current implementation pre-reads sectors in a separate thread */
-iin_t *thd_create(iin_t *worker);
+iin_t* thd_create(iin_t* worker);
 
 #endif /* _THD_IIN_H defined? */

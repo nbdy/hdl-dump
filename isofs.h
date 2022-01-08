@@ -29,20 +29,19 @@
 
 C_START
 
-typedef struct ps2_cdvd_info_type
-{
-    enum {
-        mt_unknown,
-        mt_cd,
-        mt_dvd
-    } media_type;
-    char volume_id[32 + 1];
-    char startup_elf[12 + 1];
-    u_int64_t layer_pvd;
+typedef struct ps2_cdvd_info_type {
+  enum {
+    mt_unknown,
+    mt_cd,
+    mt_dvd
+  } media_type;
+  char volume_id[32 + 1];
+  char startup_elf[12 + 1];
+  u_int64_t layer_pvd;
 } ps2_cdvd_info_t;
 
-int isofs_get_ps2_cdvd_info(iin_t *iin,
-                            /*@out@*/ ps2_cdvd_info_t *info);
+int isofs_get_ps2_cdvd_info(iin_t* iin,
+                            /*@out@*/ ps2_cdvd_info_t* info);
 
 C_END
 

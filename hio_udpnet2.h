@@ -25,16 +25,16 @@
 #define _HIO_UDPNET2_H
 
 #include "config.h"
-#include "hio.h"
 #include "dict.h"
+#include "hio.h"
 
 C_START
 
 /* accepts paths of the following form: "udp2:a.b.c.d",
    where a.b.c.d is a valid IP address */
-int hio_udpnet2_probe(const dict_t *config,
-                      const char *path,
-                      /*@special@*/ hio_p_t *hio) /*@allocates *hio@*/ /*@defines *hio@*/;
+int hio_udpnet2_probe(const dict_t* config,
+                      const char* path,
+                      /*@special@*/ hio_p_t* hio) /*@allocates *hio@*/ /*@defines *hio@*/;
 
 C_END
 

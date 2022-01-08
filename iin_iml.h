@@ -30,8 +30,8 @@
 C_START
 
 /* would accept IML file */
-int iin_iml_probe_path(const char *path,
-                       /*@special@*/ iin_p_t *iin) /*@allocates *iin@*/ /*@defines *iin@*/;
+int iin_iml_probe_path(const char* path,
+                       /*@special@*/ iin_p_t* iin) /*@allocates *iin@*/ /*@defines *iin@*/;
 
 C_END
 

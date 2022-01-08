@@ -31,8 +31,8 @@ C_START
 
 /* would accept CDRWIN cuesheet file (.CUE) with a single track
    and a single binary data file */
-int iin_cdrwin_probe_path(const char *path,
-                          /*@special@*/ iin_p_t *iin) /*@allocates *iin@*/ /*@defines *iin@*/;
+int iin_cdrwin_probe_path(const char* path,
+                          /*@special@*/ iin_p_t* iin) /*@allocates *iin@*/ /*@defines *iin@*/;
 
 C_END
 

@@ -40,24 +40,37 @@ set(SOURCES
         net_common.c
         )
 
-if(UNIX)
+if (UNIX)
     list(APPEND ${SOURCES} "osal_unix.c")
-else()
+else ()
     list(APPEND ${SOURCES} "osal_win32.c")
-endif()
+endif ()
 
 add_executable(hdl-dump ${SOURCES})
 
+set(C_FLAGS "-DUSE_THREADED_IIN")
+set(CXX_FLAGS "-DUSE_THREADED_IIN")
+set(LINK_LIBS "")
+
 if (WIN32)
     message(STATUS "Building for Windows")
-    target_compile_definitions(hdl-dump PRIVATE VERSION="${VERSION}" _BUILD_WIN32)
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_BUILD_WIN32 -D_WIN32_WINNT=0x0500 -DUSE_THREADED_IIN")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_BUILD_WIN32 -DUSE_THREADED_IIN")
-    target_link_libraries(hdl-dump PRIVATE winmm wsock32)
+    set(COMPILE_DEFS _BUILD_WIN32)
+    set(C_FLAGS "${C_FLAGS} -D_BUILD_WIN32 -D_WIN32_WINNT=0x0500")
+    set(CXX_FLAGS "${CXX_FLAGS} -D_BUILD_WIN32")
+    set(LINK_LIBS "winmm wsock32")
 elseif (UNIX)
     message(STATUS "Building for Unix")
-    target_compile_definitions(hdl-dump PRIVATE VERSION="${VERSION}" _BUILD_UNIX _GNU_SOURCE)
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_BUILD_UNIX -D_GNU_SOURCE -DUSE_THREADED_IIN")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_BUILD_UNIX -D_GNU_SOURCE -DUSE_THREADED_IIN")
-    target_link_libraries(hdl-dump PRIVATE pthread)
+    set(COMPILE_DEFS _BUILD_UNIX _GNU_SOURCE)
+    set(C_FLAGS "${C_FLAGS} -D_BUILD_UNIX -D_GNU_SOURCE")
+    set(CXX_FLAGS "${CXX_FLAGS} -D_BUILD_UNIX -D_GNU_SOURCE")
+    set(LINK_LIBS "pthread")
 endif ()
+
+target_compile_definitions(hdl-dump PRIVATE VERSION="${VERSION}" ${COMPILE_DEFS})
+
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${C_FLAGS}")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CXX_FLAGS}")
+target_link_libraries(hdl-dump PRIVATE ${LINK_LIBS})
+
+add_library(HDLpp HDLpp.h)
+set_target_properties(HDLpp PROPERTIES LINKER_LANGUAGE CXX)

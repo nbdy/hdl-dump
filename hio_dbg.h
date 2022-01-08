@@ -25,16 +25,16 @@
 #define _HIO_DBG_H
 
 #include "config.h"
-#include "hio.h"
 #include "dict.h"
+#include "hio.h"
 
 C_START
 
 /* accepts paths of the following form:
    "dbg:path-to-debug-dump-file" */
-int hio_dbg_probe(const dict_t *config,
-                  const char *path,
-                  /*@special@*/ hio_p_t *hio) /*@allocates *hio@*/ /*@defines *hio@*/;
+int hio_dbg_probe(const dict_t* config,
+                  const char* path,
+                  /*@special@*/ hio_p_t* hio) /*@allocates *hio@*/ /*@defines *hio@*/;
 
 C_END
 

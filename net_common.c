@@ -27,55 +27,51 @@
 #else
 #include <winsock.h> /* GNU C/C++ compiler */
 #endif
-#include <windows.h>
 #include <sys/types.h>
+#include <windows.h>
 #elif defined(_BUILD_UNIX)
 #include <errno.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/socket.h>
 #include <netinet/in.h>
 #include <netinet/tcp.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <unistd.h>
 #endif
-#include <string.h>
 #include "byteseq.h"
 #include "net_common.h"
 #include "retcodes.h"
-
+#include <string.h>
 
 /**************************************************************/
 int recv_exact(int s,
-               void *buf,
+               void* buf,
                u_int32_t bytes,
-               int flags)
-{
-    ssize_t total = 0, result = 1;
-    while (bytes > 0 && result > 0) {
-        result = recv(s, buf, bytes, flags);
-        if (result > 0) {
-            buf = (char *)buf + result;
-            total += result;
-            bytes -= result;
-        }
+               int flags) {
+  ssize_t total = 0, result = 1;
+  while (bytes > 0 && result > 0) {
+    result = recv(s, buf, bytes, flags);
+    if (result > 0) {
+      buf = (char*) buf + result;
+      total += result;
+      bytes -= result;
     }
-    return ((int)(result >= 0 ? total : result));
+  }
+  return ((int) (result >= 0 ? total : result));
 }
-
 
 /**************************************************************/
 int send_exact(int s,
-               const void *buf,
+               const void* buf,
                u_int32_t bytes,
-               int flags)
-{
-    ssize_t total = 0, result = 1;
-    while (bytes > 0 && result > 0) {
-        result = send(s, buf, bytes, flags);
-        if (result > 0) {
-            buf = (char *)buf + result;
-            total += result;
-            bytes -= result;
-        }
+               int flags) {
+  ssize_t total = 0, result = 1;
+  while (bytes > 0 && result > 0) {
+    result = send(s, buf, bytes, flags);
+    if (result > 0) {
+      buf = (char*) buf + result;
+      total += result;
+      bytes -= result;
     }
-    return ((int)(result >= 0 ? total : result));
+  }
+  return ((int) (result >= 0 ? total : result));
 }

@@ -32,20 +32,20 @@ C_START
 
 typedef struct iin_img_base_type iin_img_base_t;
 
-iin_img_base_t *
+iin_img_base_t*
 img_base_alloc(u_int32_t raw_sector_size,
                u_int32_t raw_skip_offset);
 
 /* input is guaranteed to be upsized to one sector only (that is if input size is not
    aligned on sector size, the rest up to sector size would be zero-filled) */
-int img_base_add_part(iin_img_base_t *img_base,
-                      const char *input_path,
+int img_base_add_part(iin_img_base_t* img_base,
+                      const char* input_path,
                       u_int32_t length_s,            /* input length in sectors */
                       u_int64_t skip,                /* bytes to skip in the begining of the input */
                       u_int32_t device_sector_size); /* to align reads on */
 
 /* gap is only allowed IN THE BEGINING OR BETWEEN files and cannot exist behind the last file */
-void img_base_add_gap(iin_img_base_t *img_base,
+void img_base_add_gap(iin_img_base_t* img_base,
                       u_int32_t length_s);
 
 C_END
